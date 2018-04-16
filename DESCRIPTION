@@ -18,9 +18,11 @@ Imports:
     fs,
     purrr,
     glue
-Suggests:
+Suggests: 
+    dplyr,
     knitr,
-    testthat
+    testthat,
+    rmarkdown
 LazyData: TRUE
 License: MIT + file LICENSE
 VignetteBuilder: knitr
