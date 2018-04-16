@@ -1,0 +1,42 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# fletcher
+
+The goal of fletcher is to convert [quiver notebooks](http://happenapps.com/#quiver) to markdown documents.
+
+## Installation
+
+You can install the released version of fletcher from [CRAN](https://CRAN.R-project.org) with:
+
+``` r
+remotes::install_github("dpastoor/fletcher")
+```
+
+## motivation
+
+Quiver is a fantastic tool for documenting, however there are some limitations, such
+as being mac only and rendering only within the quiver app. In many cases, 
+creating documentation makes sense within quiver, taking advantages of its functionality to 
+easily embed images via copy/paste, code cells for organization, search
+functionality, etc. Once docs need to be pushed to git, or other knowledge bases, 
+a more standard format might be needed. This tool allows the seemless translation
+between the quiver cells (code/markdown) to markdown documents.
+
+
+```{r}
+devtools::session_info()
+```
+
