@@ -17,7 +17,7 @@ notebook_meta <- function(.x) {
 #' list notebooks in a quiver library
 #' @param .x quiver library
 #' @importFrom fs dir_ls
-#' @importFrom purrr set_names
+#' @importFrom purrr set_names map
 #' @export
 notebook_info <- function(.x, .df = FALSE) {
   qvnb <- dir_ls(.x ,type = "directory", glob = "*.qvnotebook")

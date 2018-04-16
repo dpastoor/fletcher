@@ -2,6 +2,7 @@
 
 export("%>%")
 export(list_notes)
+export(note_details)
 export(notebook_info)
 importFrom(fs,dir_ls)
 importFrom(magrittr,"%>%")
