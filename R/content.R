@@ -1,10 +1,9 @@
 #' turn cells to markdown
 #' @param .content content
-#' @param .nb notebook name
 #' @param asset_path relative path to assets to content
 #' @importFrom purrr map_chr
 #' @export
-template_content <- function(.content, .nb, asset_path = glue::glue("assets/{.nb}")) {
+template_content <- function(.content, asset_path = "assets") {
   map_chr(.content$cells, function(.cell) {
   if(.cell$type == "code") {
     return(paste(glue::glue("```{.cell$language}"), .cell$data, "```", sep = "\n", collapse = "\n"))
