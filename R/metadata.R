@@ -34,7 +34,7 @@ note_details <- function(.x) {
   metadata <- read_metadata(.x)
   return(list(
     meta = metadata,
-    content = read_json(file.path(.x, "content"))
+    content = read_json(file.path(.x, "content.json"))
   ))
 }
 
