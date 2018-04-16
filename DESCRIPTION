@@ -16,7 +16,8 @@ Imports:
     jsonlite,
     magrittr,
     fs,
-    purrr
+    purrr,
+    glue
 Suggests:
     knitr,
     testthat
