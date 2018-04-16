@@ -19,6 +19,24 @@ template_content <- function(.content, asset_path = "assets") {
     paste0(collapse = "\n\n")
 }
 
+#' copy resources
+#' @param .x quiver note directory
+#' @param .ad assets directory
+#' @importFrom fs file_copy dir_create dir_exists
+#' @export
+copy_assets <- function(.x, .ad) {
+  maybe_resources <- file.path(.x, "resources")
+  copied <- NULL
+  if(dir_exists(maybe_resources)) {
+    if (!dir_exists(.ad)) {
+      dir_create(.ad, recursive = TRUE)
+    }
+    resources <- dir_ls(maybe_resources, type = "file")
+    copied <- file_copy(resources,
+                        file.path(.ad, basename(resources)))
+  }
+  return(copied)
+}
 
 #' write content template to a file
 #' @param .ct content template
