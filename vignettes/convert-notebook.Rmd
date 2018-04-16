@@ -1,0 +1,62 @@
+---
+title: "Vignette Title"
+author: "Vignette Author"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r}
+library(dplyr)
+library(purrr)
+library(fletcher)
+```
+
+```{r}
+example_notebook <- system.file("example_notebook", package = "fletcher")
+```
+
+```{r}
+nbi <- notebook_info()
+```
+
+```{r}
+notebooks <- nbi %>% map_df( ~ as_data_frame(.x)) %>%
+  filter(!is.na(note_paths))
+notebooks
+```
+
+```{r}
+go_details <- notebooks %>% 
+  filter(name == "css") %>% 
+  mutate(details = map(note_paths, note_details),
+         tc = map(details, ~ template_content(.x$content)))
+```
+
+```{r}
+go_details %>% 
+  mutate(
+    title = map_chr(details, ~ .x$meta$title),
+    d__ = map2(tc, title, ~ write_content( .x, glue::glue("tmp/{.y}.md"))),
+    a__ = map(note_paths, copy_assets, "tmp/assets")
+    )
+```
+
+```{r}
+qv1 <- "quiverlib/Quiver.qvlibrary/6B3F37D6-2B45-4AD5-9841-32BD07D00590.qvnotebook/056E4B2E-48A5-499C-800F-7D2B23538A78.qvnote"
+qv1_d <- note_details(qv1)
+```
+
+```{r}
+template_content(qv1_d$content) %>% cat
+```
