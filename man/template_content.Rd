@@ -4,12 +4,10 @@
 \alias{template_content}
 \title{turn cells to markdown}
 \usage{
-template_content(.content, .nb, asset_path = glue::glue("assets/{.nb}"))
+template_content(.content, asset_path = "assets")
 }
 \arguments{
 \item{.content}{content}
-
-\item{.nb}{notebook name}
 
 \item{asset_path}{relative path to assets to content}
 }
