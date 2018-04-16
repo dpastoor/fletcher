@@ -29,6 +29,7 @@ notebook_info <- function(.x, .df = FALSE) {
 
 #' details from a given note
 #' @param .x path to qvnote
+#' @export
 note_details <- function(.x) {
   metadata <- read_metadata(.x)
   return(list(
