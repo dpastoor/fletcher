@@ -37,7 +37,7 @@ copy_assets <- function(.x, .ad) {
     }
     resources <- dir_ls(maybe_resources, type = "file")
     copied <- file_copy(resources,
-                        file.path(.ad, basename(resources)))
+                        file.path(.ad, basename(resources)), overwrite = TRUE)
   }
   return(copied)
 }
